@@ -3,6 +3,7 @@ import SearchBar from './SearchBar';
 //import youtube from '../api/youtube';
 import VedioList from './vedioList';
 import axios from 'axios';
+import VedioDetails from './vedioDetails';
 
 class App extends React.Component{
 
@@ -36,8 +37,11 @@ class App extends React.Component{
         return(
         <div className="ui container">
             <SearchBar onFormSubmit={this.onTermSubmit}/>
-            I have {this.state.vedios.length} vedios
+            {/* I have {this.state.
+            vedios.length} vedios */}
+             <VedioDetails vedio={this.state.selectedVedio}/>
             <VedioList onVedioSelected={this.onVedioSelected} vedios={this.state.vedios}/>
+           
             </div>
     );
     }

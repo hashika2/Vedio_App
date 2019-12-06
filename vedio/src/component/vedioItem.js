@@ -1,12 +1,13 @@
 import React from 'react';
 import './vedioItem.css';
 
-const VedioItem =({vedio,onVedioSelected})=>{
+const VedioItem =({vedios,onVedioSelected})=>{
+    //console.log(video);
     return (
-    <div onClick={()=>onVedioSelected(vedio)} className="vedio-item">
-        <img className="ui image" src={vedio.snippet.thumbnails.medium.url}/>
+    <div onClick={()=>onVedioSelected(vedios)} className="vedio-item">
+        <img className="ui image" src={vedios.snippet.thumbnails.medium.url}/>
         <div className="content">
-            <div className="header">{vedio.snippet.title}
+            <div className="header">{vedios.snippet.title}
             </div>
         </div>
         

@@ -2,8 +2,9 @@ import React from 'react';
 import VedioItem from './vedioItem';
 
  const vedioList =({vedios,onVedioSelected})=>{
+     console.log(vedios)
      const getVedioItems =vedios.map(vedio=>{
-        return <VedioItem onVedioSelected={onVedioSelected} vedios={vedio} id={vedio.id}/>;
+        return <VedioItem onVedioSelected={onVedioSelected} -={vedio}/>;
      })
     return(
         <div className="ui relaxed divided list">{getVedioItems}</div>
