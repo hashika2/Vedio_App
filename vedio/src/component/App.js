@@ -7,7 +7,8 @@ import axios from 'axios';
 class App extends React.Component{
 
     state={
-        vedios:[]
+        vedios:[],
+        selectedVedio:null
     }
         onTermSubmit=async (term)=>{
             const APIKEY = 'AIzaSyAQpXGoCMfxA2RPAQoz5Qqa5qYhpxBYsI0';
@@ -27,12 +28,16 @@ class App extends React.Component{
             console.error(err.message);
         }
      }
+     onVedioSelected=vedio=>{
+        //  console.log("form the App",vedio);
+        this.setState({selectedVedio:vedio});
+     }
     render(){
         return(
         <div className="ui container">
             <SearchBar onFormSubmit={this.onTermSubmit}/>
             I have {this.state.vedios.length} vedios
-            <VedioList vedios={this.state.vedios}/>
+            <VedioList onVedioSelected={this.onVedioSelected} vedios={this.state.vedios}/>
             </div>
     );
     }
