@@ -4,8 +4,17 @@ const vedioDatails=({vedio})=>{
     if(!vedio){
         return <div>LOADING ....</div>
     }
+
+    const videoSrc=`http://www.youtube.com/embed/${vedio.id.videoId}`
     return(
-    <div>{vedio.snippet.title}</div>
+    <div>
+        <div className="ui embed">
+            <iframe src={videoSrc}></iframe>
+        </div>
+        <div className="ui segment">
+            <h4 className="ui header">{vedio.snippet.title}</h4> 
+            <p>{vedio.snippet.description}</p>       
+        </div></div>
     )
 }
 
