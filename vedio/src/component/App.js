@@ -11,6 +11,9 @@ class App extends React.Component{
         vedios:[],
         selectedVedio:null
     }
+    componentDidMount(){
+        this.onTermSubmit("children")
+    }
         onTermSubmit=async (term)=>{
             const APIKEY = 'AIzaSyAQpXGoCMfxA2RPAQoz5Qqa5qYhpxBYsI0';
 
@@ -23,7 +26,10 @@ class App extends React.Component{
                     key:APIKEY
                 }
             });
-            this.setState({vedios:response.data.items});
+            this.setState({
+                vedios:response.data.items,
+                selectedVedio:response.data.items[0]
+            });
             //console.log(this.state.vedios)
         }catch(err){
             console.error(err.message);
@@ -39,8 +45,20 @@ class App extends React.Component{
             <SearchBar onFormSubmit={this.onTermSubmit}/>
             {/* I have {this.state.
             vedios.length} vedios */}
-             <VedioDetails vedio={this.state.selectedVedio}/>
-            <VedioList onVedioSelected={this.onVedioSelected} vedios={this.state.vedios}/>
+            <div className="ui grid">
+                <div className="ui row">
+                    <div className="eleven wide column">
+                      <VedioDetails vedio={this.state.selectedVedio}/>
+                    </div>
+                    <div className="five wide column">
+                      <VedioList onVedioSelected={this.onVedioSelected} vedios={this.state.vedios}/>
+                      
+                    </div>
+
+                </div>
+            
+            </div>
+           
            
             </div>
     );
